@@ -1,16 +1,14 @@
 import ListItem from "./ListItem";
 import { Contact } from "./domain";
 
-const contacts: Contact[] = [
-  { id: 1, name: "John Doe", email: "jonh@test.com", phoneNumber: "123" },
-  { id: 2, name: "Alberto test", email: "jonh@test.com", phoneNumber: "123" },
-  { id: 3, name: "Karla", email: "jonh@test.com", phoneNumber: "123" },
-];
+type Props = {
+  contacts: Contact[];
+};
 
-const List = () => {
+const List = ({ contacts }: Props) => {
   return (
     <div className="flex flex-col gap-2">
-      {contacts.map((item, index) => (
+      {contacts.map((item: any, index: any) => (
         <ListItem
           key={index}
           id={item.id}
