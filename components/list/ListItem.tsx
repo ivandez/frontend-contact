@@ -10,7 +10,9 @@ const ListItem = ({ name, id }: Contact) => {
         <Button color="blue">
           <Link href={`/dashboard/${id}`}>view</Link>
         </Button>
-        <Button color="yellow">edit</Button>
+        <Button color="yellow">
+          <Link href={`/dashboard/${id}/edit`}>edit</Link>
+        </Button>
         <Button color="red">delete</Button>
       </div>
     </div>
