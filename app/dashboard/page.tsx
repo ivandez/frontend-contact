@@ -4,6 +4,7 @@ import { Button, TextInput } from "flowbite-react";
 import List from "@/components/list/List";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 export default function Page() {
   const [contacts, setcontacts] = useState([]);
@@ -24,19 +25,21 @@ export default function Page() {
 
   return (
     <div className="container mx-auto px-4 mt-2 flex flex-col items-center">
-      <form className="flex max-w-md gap-4 ">
-        <div>
-          <TextInput
-            id="email1"
-            type="email"
-            placeholder="Jhon D..."
-            required
-          />
-        </div>
-        <Button type="submit" color="success">
-          new
+      <div className="flex max-w-md gap-4 ">
+        <form>
+          <div>
+            <TextInput
+              id="email1"
+              type="email"
+              placeholder="Jhon D..."
+              required
+            />
+          </div>
+        </form>
+        <Button color="success">
+          <Link href={`/dashboard/create`}>new</Link>
         </Button>
-      </form>
+      </div>
       <div className="mt-2">
         <List contacts={contacts} />
       </div>
