@@ -4,9 +4,19 @@ import { Contact } from "@/components/list/domain";
 import NavigationBar from "@/components/navbar/NavigationBar";
 import axios from "axios";
 import { Button } from "flowbite-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Page({ params }: { params: { id: string } }) {
+  const deleteContact = async (id: any) => {
+    try {
+      axios.delete(`http://localhost:3000/v1/agenda/${id}`);
+      alert("deleted");
+    } catch (error) {
+      alert("Can not delete this contact");
+    }
+  };
+
   const [contact, setcontact] = useState<Contact>();
 
   useEffect(() => {
@@ -37,9 +47,15 @@ export default function Page({ params }: { params: { id: string } }) {
           <h2>{contact?.email}</h2>
         </div>
         <div className="flex gap-2">
-          <Button color="blue">back</Button>
-          <Button color="yellow">Edit</Button>
-          <Button color="red">delete</Button>
+          <Button color="blue">
+            <Link href={`/dashboard/`}>back</Link>
+          </Button>
+          <Button color="yellow">
+            <Link href={`/dashboard/${params.id}/edit`}>edit</Link>
+          </Button>
+          <Button color="red" onClick={() => deleteContact(params.id)}>
+            delete
+          </Button>
         </div>
       </div>
     </>
